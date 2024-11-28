@@ -1,9 +1,14 @@
 import { ErrorMessage, Field, Form, Formik } from "formik"
 import s from "./ContactForm.module.css"
-import { nanoid } from "nanoid"
+// import { nanoid } from "nanoid"
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsSlice";
+import { nanoid } from "@reduxjs/toolkit";
 
-const ContactForm = ({ onAdd }) => {
+const ContactForm = () => {
+
+	const dispatch = useDispatch();
 
 	const initialValues = {
 		name: "",
@@ -11,8 +16,13 @@ const ContactForm = ({ onAdd }) => {
 	}
 
 	const handleSubmit = (values, actions) => {
-		values.id = nanoid();
-		onAdd(values);
+		const newContact = {
+			// Додаємо ідентифікатор в об'єкт нового контакту задопомогою nanoid (вбулований в Redux Toolkit )
+			id: nanoid(),
+			name: values.name,
+			number: values.number,
+		}
+		dispatch(addContact(newContact));
 		actions.resetForm();
 	}
 
@@ -20,7 +30,6 @@ const ContactForm = ({ onAdd }) => {
 		name: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required"),
 		number: Yup.string().matches(/^[0-9\s-().+]*$/, "Only numbers and allowed symbols are permitted").min(3, "Too Short!").max(50, "Too Long!").required("Required"),
 	});
-
 
 	return (
 		<div>
