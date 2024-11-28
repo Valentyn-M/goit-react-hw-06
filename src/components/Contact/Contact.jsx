@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { deleteContact, editContactName, editContactNumber } from "../../redux/contactsSlice";
 import s from "./Contact.module.css"
 import { FaUserLarge, FaPhone } from "react-icons/fa6";
+import { MdOutlineEdit, MdOutlinePersonRemove } from "react-icons/md";
 
 const Contact = ({ contact: { id, name, number } }) => {
 
@@ -32,7 +33,7 @@ const Contact = ({ contact: { id, name, number } }) => {
 							// Відправляємо екшен із валідним ім'ям
 							dispatch(editContactName({ id, newName: newName.trim() }));
 						}}>
-						Edit
+						<MdOutlineEdit /><span>Edit</span>
 					</button>
 				</li>
 				<li className={s.field}>
@@ -53,13 +54,13 @@ const Contact = ({ contact: { id, name, number } }) => {
 							// Відправляємо екшен із валідним ім'ям
 							dispatch(editContactNumber({ id, newNumber: newNumber.trim() }));
 						}}>
-						Edit
+						<MdOutlineEdit /><span>Edit</span>
 					</button>
 				</li>
 			</ul>
 			{/* При клику передаємо колбек-функцію, в якій ми викликаємо екшен та передаємо дані для payload (removeContact(id) і відправляємо екшен за допомогою dispatch) */}
 			<button className={s.deleteBtn} onClick={() => { dispatch(deleteContact(id)) }}>
-				Delete contact
+				<MdOutlinePersonRemove className={s.deleteBtnIcon} /><span>Delete contact</span>
 			</button>
 		</div>
 	)

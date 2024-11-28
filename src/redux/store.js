@@ -21,6 +21,7 @@ const persistConfig = {
 	storage,
 };
 
+// Використовуємо persistReducer, щоб застосувати конфігурацію до редюсера слайса контактів
 const persistedReducer = persistReducer(persistConfig, contactsReducer);
 
 // Код оголошення редюсерів слайсів
@@ -37,4 +38,5 @@ export const store = configureStore({
 		}),
 });
 
+// Використовуємо persistStore для створення persistor для PersistGate
 export const persistor = persistStore(store);

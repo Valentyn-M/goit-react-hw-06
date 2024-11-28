@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import s from './SearchBox.module.css';
 import { changeFilter, selectNameFilter } from '../../redux/filtersSlice';
+import { MdOutlinePersonSearch } from 'react-icons/md';
 
 const SearchBox = () => {
 
@@ -14,12 +15,15 @@ const SearchBox = () => {
 			<div className={s.search}>
 				<label className={s.label}>
 					<span>Search by name</span>
-					<input
-						className={s.field}
-						type="text"
-						value={filterValue}
-						onChange={(evt) => dispatch(changeFilter(evt.target.value))}
-					/>
+					<div className={s.fieldWrap}>
+						<input
+							className={s.field}
+							type="text"
+							value={filterValue}
+							onChange={(evt) => dispatch(changeFilter(evt.target.value))}
+						/>
+						<MdOutlinePersonSearch className={s.fieldIcon} />
+					</div>
 				</label>
 			</div>
 		</div>

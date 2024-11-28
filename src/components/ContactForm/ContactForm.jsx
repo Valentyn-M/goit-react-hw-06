@@ -1,11 +1,13 @@
 import { ErrorMessage, Field, Form, Formik } from "formik"
 import s from "./ContactForm.module.css"
-// import { nanoid } from "nanoid"
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contactsSlice";
 import { nanoid } from "@reduxjs/toolkit";
 import { FaAddressBook } from "react-icons/fa";
+import { FaPhone, FaUserLarge } from "react-icons/fa6";
+import { MdOutlinePersonAdd } from "react-icons/md";
+import { useRef } from "react";
 
 const ContactForm = () => {
 
@@ -25,6 +27,10 @@ const ContactForm = () => {
 		}
 		dispatch(addContact(newContact));
 		actions.resetForm();
+
+		if (buttonRef.current) {
+			buttonRef.current.blur();
+		}
 	}
 
 	const contactSchema = Yup.object().shape({
@@ -32,23 +38,25 @@ const ContactForm = () => {
 		number: Yup.string().matches(/^[0-9\s-().+]*$/, "Only numbers and allowed symbols are permitted").min(3, "Too Short!").max(50, "Too Long!").required("Required"),
 	});
 
+	const buttonRef = useRef(null);
+
 	return (
 		<div className={s.contactForm}>
 			<div className={s.formWrap}>
-				<h1 className={s.title}> Phonebook</h1>
+				<h1 className={s.title}><FaAddressBook /> Phonebook</h1>
 				<Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={contactSchema}>
 					<Form className={s.form}>
 						<label className={s.label}>
-							<span>Name</span>
+							<div className={s.labelName}><FaUserLarge className={s.icon} /><span>Name</span></div>
 							<Field className={s.field} type="text" name="name" />
 							<ErrorMessage className={s.error} name="name" component="span" />
 						</label>
 						<label className={s.label}>
-							<span>Nubmer</span>
+							<div className={s.labelName}><FaPhone className={s.icon} /><span>Number</span></div>
 							<Field className={s.field} type="text" name="number" />
 							<ErrorMessage className={s.error} name="number" component="span" />
 						</label>
-						<button className={s.btn} type="submit">Add contact</button>
+						<button className={s.btn} type="submit" ref={buttonRef}><MdOutlinePersonAdd /><span>Add contact</span></button>
 					</Form>
 				</Formik>
 			</div>
