@@ -1,0 +1,41 @@
+.contact {
+	padding: 15px 10px;
+	border: 1px solid #212121;
+	border-radius: 5px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 15px;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.btn {
+	background-color: #EFEFEF;
+	border: 1px solid #9D9D9D;
+	border-radius: 3px;
+	padding: 7px 10px;
+	display: inline-flex;
+	height: fit-content;
+	transition: background-color 0.3s ease 0s;
+
+	&:hover,
+	&:focus {
+		background-color: #E0E0E0;
+	}
+}
+
+.field {
+	word-break: break-all;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.icon {
+	flex-shrink: 0;
+}
