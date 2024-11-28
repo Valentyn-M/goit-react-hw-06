@@ -1,11 +1,11 @@
 .contact {
-	padding: 15px 10px;
+	padding: 15px;
 	border: 1px solid #212121;
 	border-radius: 5px;
 	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
-	align-items: center;
-	gap: 15px;
+	gap: 20px;
 }
 
 .list {
@@ -14,13 +14,37 @@
 	gap: 15px;
 }
 
-.btn {
+.field {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	gap: 10px;
+}
+
+.fieldItem {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.fieldValue {
+	word-break: break-all;
+}
+
+.icon {
+	flex-shrink: 0;
+}
+
+.fieldBtn,
+.deleteBtn {
 	background-color: #EFEFEF;
 	border: 1px solid #9D9D9D;
 	border-radius: 3px;
 	padding: 7px 10px;
-	display: inline-flex;
-	height: fit-content;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	transition: background-color 0.3s ease 0s;
 
 	&:hover,
@@ -29,13 +53,6 @@
 	}
 }
 
-.field {
-	word-break: break-all;
-	display: flex;
-	align-items: center;
-	gap: 10px;
-}
-
-.icon {
-	flex-shrink: 0;
+.deleteBtn {
+	margin: 0 auto;
 }

@@ -1,11 +1,18 @@
+.searchWrap {
+	display: flex;
+	justify-content: center;
+}
+
 .search {
-	max-width: 350px;
+	flex-basis: 350px;
 }
 
 .label {
 	display: flex;
 	flex-direction: column;
 	gap: 5px;
+	font-weight: 500;
+	font-size: 20px;
 }
 
 .field {

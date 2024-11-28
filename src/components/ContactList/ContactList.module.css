@@ -1,9 +1,10 @@
 .list {
 	display: flex;
+	justify-content: center;
 	flex-wrap: wrap;
-	gap: 15px;
+	gap: 20px;
 }
 
 .item {
-	flex-basis: 300px;
+	flex-basis: 350px;
 }

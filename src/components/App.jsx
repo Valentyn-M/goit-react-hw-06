@@ -6,13 +6,10 @@ import SearchBox from './SearchBox/SearchBox'
 function App() {
 
 	return (
-		<div className='phonebook'>
-			<h1 className='title'>Phonebook</h1>
-			<div className='phonebook-wrap'>
-				<ContactForm />
-				<SearchBox />
-				<ContactList />
-			</div>
+		<div className='phonebook-wrap'>
+			<ContactForm />
+			<SearchBox />
+			<ContactList />
 		</div>
 	)
 }

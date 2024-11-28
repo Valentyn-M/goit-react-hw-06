@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contactsSlice";
 import { nanoid } from "@reduxjs/toolkit";
+import { FaAddressBook } from "react-icons/fa";
 
 const ContactForm = () => {
 
@@ -32,22 +33,25 @@ const ContactForm = () => {
 	});
 
 	return (
-		<div>
-			<Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={contactSchema}>
-				<Form className={s.form}>
-					<label className={s.label}>
-						<span>Name</span>
-						<Field className={s.field} type="text" name="name" />
-						<ErrorMessage className={s.error} name="name" component="span" />
-					</label>
-					<label className={s.label}>
-						<span>Nubmer</span>
-						<Field className={s.field} type="text" name="number" />
-						<ErrorMessage className={s.error} name="number" component="span" />
-					</label>
-					<button className={s.btn} type="submit">Add contact</button>
-				</Form>
-			</Formik>
+		<div className={s.contactForm}>
+			<div className={s.formWrap}>
+				<h1 className={s.title}> Phonebook</h1>
+				<Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={contactSchema}>
+					<Form className={s.form}>
+						<label className={s.label}>
+							<span>Name</span>
+							<Field className={s.field} type="text" name="name" />
+							<ErrorMessage className={s.error} name="name" component="span" />
+						</label>
+						<label className={s.label}>
+							<span>Nubmer</span>
+							<Field className={s.field} type="text" name="number" />
+							<ErrorMessage className={s.error} name="number" component="span" />
+						</label>
+						<button className={s.btn} type="submit">Add contact</button>
+					</Form>
+				</Formik>
+			</div>
 		</div>
 	)
 }

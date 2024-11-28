@@ -14,48 +14,52 @@ const Contact = ({ contact: { id, name, number } }) => {
 	return (
 		<div className={s.contact}>
 			<ul className={s.list}>
-				<li className={s.field}><FaUserLarge className={s.icon} />{name}</li>
-				<li className={s.field}><FaPhone className={s.icon} />{number}</li>
+				<li className={s.field}>
+					<div className={s.fieldItem}><FaUserLarge className={s.icon} /><span className={s.fieldValue}>{name}</span></div>
+					<button
+						className={s.fieldBtn}
+						onClick={() => {
+							const newName = prompt("Enter new name");
+							if (newName === null) {
+								// Користувач натиснув Cancel, нічого не робимо
+								return;
+							}
+							if (newName.trim() === "") {
+								// Якщо поле порожнє, виводимо повідомлення
+								alert("Name cannot be empty!");
+								return;
+							}
+							// Відправляємо екшен із валідним ім'ям
+							dispatch(editContactName({ id, newName: newName.trim() }));
+						}}>
+						Edit
+					</button>
+				</li>
+				<li className={s.field}>
+					<div className={s.fieldItem}><FaPhone className={s.icon} /><span className={s.fieldValue}>{number}</span></div>
+					<button
+						className={s.fieldBtn}
+						onClick={() => {
+							const newNumber = prompt("Enter new number");
+							if (newNumber === null) {
+								// Користувач натиснув Cancel, нічого не робимо
+								return;
+							}
+							if (newNumber.trim() === "") {
+								// Якщо поле порожнє, виводимо повідомлення
+								alert("Number cannot be empty!");
+								return;
+							}
+							// Відправляємо екшен із валідним ім'ям
+							dispatch(editContactNumber({ id, newNumber: newNumber.trim() }));
+						}}>
+						Edit
+					</button>
+				</li>
 			</ul>
-			<button
-				className={s.btn}
-				onClick={() => {
-					const newName = prompt("Enter new name");
-					if (newName === null) {
-						// Користувач натиснув Cancel, нічого не робимо
-						return;
-					}
-					if (newName.trim() === "") {
-						// Якщо поле порожнє, виводимо повідомлення
-						alert("Name cannot be empty!");
-						return;
-					}
-					// Відправляємо екшен із валідним ім'ям
-					dispatch(editContactName({ id, newName: newName.trim() }));
-				}}>
-				Edit Name
-			</button>
-			<button
-				className={s.btn}
-				onClick={() => {
-					const newNumber = prompt("Enter new number");
-					if (newNumber === null) {
-						// Користувач натиснув Cancel, нічого не робимо
-						return;
-					}
-					if (newNumber.trim() === "") {
-						// Якщо поле порожнє, виводимо повідомлення
-						alert("Number cannot be empty!");
-						return;
-					}
-					// Відправляємо екшен із валідним ім'ям
-					dispatch(editContactNumber({ id, newNumber: newNumber.trim() }));
-				}}>
-				Edit Number
-			</button>
 			{/* При клику передаємо колбек-функцію, в якій ми викликаємо екшен та передаємо дані для payload (removeContact(id) і відправляємо екшен за допомогою dispatch) */}
-			<button className={s.btn} onClick={() => { dispatch(deleteContact(id)) }}>
-				Delete
+			<button className={s.deleteBtn} onClick={() => { dispatch(deleteContact(id)) }}>
+				Delete contact
 			</button>
 		</div>
 	)

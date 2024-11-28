@@ -10,16 +10,18 @@ const SearchBox = () => {
 	const dispatch = useDispatch();
 
 	return (
-		<div className={s.search}>
-			<label className={s.label}>
-				<span>Search by name</span>
-				<input
-					className={s.field}
-					type="text"
-					value={filterValue}
-					onChange={(evt) => dispatch(changeFilter(evt.target.value))}
-				/>
-			</label>
+		<div className={s.searchWrap}>
+			<div className={s.search}>
+				<label className={s.label}>
+					<span>Search by name</span>
+					<input
+						className={s.field}
+						type="text"
+						value={filterValue}
+						onChange={(evt) => dispatch(changeFilter(evt.target.value))}
+					/>
+				</label>
+			</div>
 		</div>
 	)
 }
