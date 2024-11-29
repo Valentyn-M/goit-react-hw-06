@@ -20,6 +20,7 @@ const SearchBox = () => {
 							className={s.field}
 							type="text"
 							value={filterValue}
+							autoComplete="off"
 							onChange={(evt) => dispatch(changeFilter(evt.target.value))}
 						/>
 						<MdOutlinePersonSearch className={s.fieldIcon} />

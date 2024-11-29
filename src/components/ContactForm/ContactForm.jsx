@@ -46,12 +46,12 @@ const ContactForm = () => {
 					<Form className={s.form}>
 						<label className={s.label}>
 							<div className={s.labelName}><FaUserLarge className={s.icon} /><span>Name</span></div>
-							<Field className={s.field} type="text" name="name" />
+							<Field className={s.field} type="text" name="name" autoComplete="off" />
 							<ErrorMessage className={s.error} name="name" component="span" />
 						</label>
 						<label className={s.label}>
 							<div className={s.labelName}><FaPhone className={s.icon} /><span>Number</span></div>
-							<Field className={s.field} type="text" name="number" />
+							<Field className={s.field} type="text" name="number" autoComplete="off" />
 							<ErrorMessage className={s.error} name="number" component="span" />
 						</label>
 						<button className={s.btn} type="submit" ref={buttonRef}><MdOutlinePersonAdd /><span>Add contact</span></button>

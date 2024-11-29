@@ -14,6 +14,7 @@ import {
 	REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { modalsReducer } from "./modalsSlice";
 
 const persistConfig = {
 	key: 'saved-contacts',
@@ -29,6 +30,7 @@ export const store = configureStore({
 	reducer: {
 		contacts: persistedReducer,
 		filters: filtersReducer,
+		modals: modalsReducer,
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({
