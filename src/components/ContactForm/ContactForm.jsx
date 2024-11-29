@@ -4,7 +4,6 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contactsSlice";
 import { nanoid } from "@reduxjs/toolkit";
-import { FaAddressBook } from "react-icons/fa";
 import { FaPhone, FaUserLarge } from "react-icons/fa6";
 import { MdOutlinePersonAdd } from "react-icons/md";
 import { useRef } from "react";
@@ -43,7 +42,6 @@ const ContactForm = () => {
 	return (
 		<div className={s.contactForm}>
 			<div className={s.formWrap}>
-				<h1 className={s.title}><FaAddressBook /> Phonebook</h1>
 				<Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={contactSchema}>
 					<Form className={s.form}>
 						<label className={s.label}>

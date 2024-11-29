@@ -5,17 +5,18 @@
 
 .search {
 	flex-basis: 350px;
-	border: 1px solid #212121;
-	border-radius: 5px;
 	padding: 15px;
+	border-radius: 8px;
+	background-color: #252728;
 }
 
 .label {
 	display: flex;
 	flex-direction: column;
-	gap: 5px;
+	gap: 8px;
 	font-weight: 500;
 	font-size: 18px;
+	color: #5aa7ff;
 }
 
 .fieldWrap {
@@ -23,12 +24,23 @@
 }
 
 .field {
-	border: 1px solid #212121;
-	border-radius: 3px;
+	border-radius: 5px;
 	padding: 7px 10px;
+	color: #E2E5E9;
+	background-color: #333334;
+	transition: background-color 0.3s ease 0s;
 	width: 100%;
 	font-weight: normal;
 	font-size: 16px;
+
+	&:hover,
+	&:focus {
+		background-color: #484848;
+	}
+
+	&:focus {
+		outline: 2px solid #0866FF;
+	}
 }
 
 .fieldIcon {
@@ -36,4 +48,5 @@
 	right: 10px;
 	top: 50%;
 	transform: translateY(-50%);
+	color: #E2E5E9;
 }
